@@ -5,6 +5,7 @@ package netlink
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"syscall"
 	"time"
@@ -101,7 +102,9 @@ func (c *conn) SendMessages(messages []Message) error {
 
 		buffers[i] = b
 	}
-
+	for _, b := range buffers {
+		fmt.Printf("buffer[%d]: %x\n", len(b), b)
+	}
 	sa := &unix.SockaddrNetlink{Family: unix.AF_NETLINK}
 	_, err := c.s.SendmsgBuffers(context.Background(), buffers, nil, sa, 0)
 	return err
