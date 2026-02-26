@@ -208,7 +208,7 @@ func (c *conn) SetWriteDeadline(t time.Time) error { return c.s.SetWriteDeadline
 // associated with the Conn.
 func (c *conn) SetReadBuffer(bytes int) error { return c.s.SetReadBuffer(bytes) }
 
-// SetReadBuffer sets the size of the operating system's transmit buffer
+// SetWriteBuffer sets the size of the operating system's transmit buffer
 // associated with the Conn.
 func (c *conn) SetWriteBuffer(bytes int) error { return c.s.SetWriteBuffer(bytes) }
 
